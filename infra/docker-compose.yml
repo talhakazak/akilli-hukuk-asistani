@@ -26,6 +26,7 @@ services:
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
     depends_on:
       postgres:
         condition: service_healthy
