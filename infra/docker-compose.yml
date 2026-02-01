@@ -15,5 +15,34 @@ services:
       timeout: 5s
       retries: 10
 
+  api:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: akilli_api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  mlflow:
+    build:
+      context: ./mlflow
+      dockerfile: Dockerfile
+    container_name: akilli_mlflow
+    restart: unless-stopped
+    ports:
+      - "5050:5000"
+    volumes:
+      - akilli_mlflow_data:/mlflow
+
 volumes:
   akilli_pgdata:
+  akilli_mlflow_data:
