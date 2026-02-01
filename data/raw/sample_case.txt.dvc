@@ -1,0 +1,5 @@
+outs:
+- md5: c6a8f3068573e592180438db64cf8582
+  size: 34
+  hash: md5
+  path: sample_case.txt
