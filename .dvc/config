@@ -1,0 +1,4 @@
+[core]
+    remote = localstore
+['remote "localstore"']
+    url = /Users/fumpty/Projects/akilli-hukuk-asistani-storage/dvcstore
