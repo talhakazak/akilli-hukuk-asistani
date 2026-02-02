@@ -46,6 +46,21 @@ services:
     volumes:
       - akilli_mlflow_data:/mlflow
 
+  minio:
+    image: minio/minio:latest
+    container_name: akilli_minio
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - akilli_minio_data:/data
+
 volumes:
   akilli_pgdata:
   akilli_mlflow_data:
+  akilli_minio_data:

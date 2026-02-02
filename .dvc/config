@@ -1,4 +1,10 @@
 [core]
-    remote = localstore
+    remote = s3store
 ['remote "localstore"']
     url = /Users/fumpty/Projects/akilli-hukuk-asistani-storage/dvcstore
+['remote "s3store"']
+    url = s3://akillidvc
+    endpointurl = http://localhost:9000
+    access_key_id = minioadmin
+    secret_access_key = minioadmin123
+    use_ssl = false
